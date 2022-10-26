@@ -78,3 +78,6 @@ class Benefit():
         profils_conditions = [
             condition for profil in self.profils for condition in profil.get_conditions_type()]
         return conditions + profils_conditions
+
+    def get_label_and_institution(self) -> str:
+        return f'{self.label} => {self.institution}'
