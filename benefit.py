@@ -65,3 +65,6 @@ class Benefit():
             self.legend = dict.get('legend', '')
         except KeyError:
             raise KeyError
+
+    def get_profils_types(self) -> list:
+        return [profil.type for profil in self.profils]
