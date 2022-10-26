@@ -14,12 +14,15 @@ class BenefitCondition():
 
 class BenefitProfile():
     type: str
-    conditions: list
+    conditions: List[BenefitCondition]
 
     def __init__(self, dict: dict) -> None:
         self.type = dict.get('type', '')
         self.conditions = [BenefitCondition(
             condition) for condition in dict.get('conditions', [])]
+
+    def get_conditions_type(self) -> List[str]:
+        return [condition.type for condition in self.conditions]
 
 
 class Benefit():
@@ -29,7 +32,7 @@ class Benefit():
     prefix = str
     conditions_generales: list
     profils: List[BenefitProfile]
-    conditions: list
+    conditions: List[BenefitCondition]
     interestFlag: str
     type: str
     unit: str
@@ -68,3 +71,10 @@ class Benefit():
 
     def get_profils_types(self) -> list:
         return [profil.type for profil in self.profils]
+
+    def get_all_conditions_types(self) -> list:
+        conditions = [
+            condition.type for condition in self.conditions_generales]
+        profils_conditions = [
+            condition for profil in self.profils for condition in profil.get_conditions_type()]
+        return conditions + profils_conditions
