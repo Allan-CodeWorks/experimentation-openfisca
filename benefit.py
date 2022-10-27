@@ -43,6 +43,7 @@ class Benefit():
     teleservice: str
     periodicite: str
     legend: str
+    file_path = str
 
     def __init__(self, dict: dict) -> None:
 
@@ -66,6 +67,7 @@ class Benefit():
             self.teleservice = dict.get('teleservice', '')
             self.periodicite = dict.get('periodicite', '')
             self.legend = dict.get('legend', '')
+            self.file_path = dict.get('file_path', '')
         except KeyError:
             raise KeyError
 
