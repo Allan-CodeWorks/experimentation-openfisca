@@ -26,6 +26,13 @@ class BenefitProfile():
 
 
 class Benefit():
+    """
+        Apparently bad idea to use this.
+
+        We need to make missing fields crash.
+
+        Refacto by removing the `dict.get()` method might be worth
+    """
     label = str
     institution = str
     description = str
